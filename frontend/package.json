@@ -1,0 +1,77 @@
+{
+  "name": "beta",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/contracts": "^4.5.0",
+    "@react-query-firebase/firestore": "^0.4.2",
+    "@stripe/react-stripe-js": "^1.7.0",
+    "@stripe/stripe-js": "^1.25.0",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.3",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.26.1",
+    "chai": "^4.3.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.6.1",
+    "express": "^4.17.3",
+    "firebase": "^9.6.8",
+    "firebase-tools": "^10.2.2",
+    "foo": "^1.0.0",
+    "framer-motion": "^6.2.6",
+    "hardhat": "^2.9.1",
+    "ipfs-http-client": "^56.0.1",
+    "path-browserify": "^1.0.1",
+    "react": "^17.0.2",
+    "react-async-script-loader": "^0.3.0",
+    "react-currency-format": "^1.1.0",
+    "react-currency-input-field": "^3.6.4",
+    "react-dom": "^17.0.2",
+    "react-google-recaptcha": "^2.1.0",
+    "react-hot-toast": "^2.2.0",
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0",
+    "react-scroll-into-view": "^1.12.0",
+    "react-select": "^5.2.2",
+    "react-stripe-checkout": "^2.6.3",
+    "react-stripe-connect-form": "^0.0.1",
+    "react-tabs": "^4.0.1",
+    "stripe": "^8.210.0",
+    "use-state-if-mounted": "^1.0.4",
+    "web-vitals": "^2.1.4",
+    "web3modal": "^1.9.5"
+  },
+  "scripts": {
+    "start-client": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.7",
+    "tailwindcss": "^3.0.23"
+  }
+}
