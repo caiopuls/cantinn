@@ -8,7 +8,7 @@ import {
 import toast, { Toaster } from 'react-hot-toast';
 
 
-export default function CheckoutForm(money) {
+export default function CheckoutForm({ money }) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -19,6 +19,7 @@ export default function CheckoutForm(money) {
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({ amount: money }),
       });
       const data = await response.json();
       const cardElement = elements.getElement(CardElement);
@@ -48,7 +49,7 @@ export default function CheckoutForm(money) {
         </div>
 
         <p className="py-3 text-center text-gray-400">↺ Reembolsos gratuitos em até 7 dias.</p>
-    
+     
 
         <button type="submit" onClick={pay} className="btn-blue">
           Concluir compra

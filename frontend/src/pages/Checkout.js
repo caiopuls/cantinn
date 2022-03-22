@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useStateIfMounted } from "use-state-if-mounted";
 import { Elements } from "@stripe/react-stripe-js";
+
 
 import ProjectSample from "../assets/ProjectSample.svg";
 import ArrowLeft from "../assets/ArrowLeft.svg";
@@ -15,7 +17,7 @@ const stripePromise = loadStripe("pk_test_51KZzOJG8Qd1I79lZQ8y9jjqs3ZdigThzQA3hH
 
 export default function Checkout() {
   const navigate = useNavigate();
-  const [postInfo, setPostInfo] = useState(null);
+  const [postInfo, setPostInfo] = useStateIfMounted(null);
   const { postId } = useParams();
 
   const getSpecificPost = async (db, postId) => {

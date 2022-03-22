@@ -1,18 +1,21 @@
 require("dotenv").config();
 const express = require("express");
-const app = express();
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const Stripe = require("stripe");
 const stripe = Stripe("sk_test_51KZzOJG8Qd1I79lZgxSUeKY4GAdiN7DbtDgaMOiscXdMuexo3uvGbIgyYk9dhoDRgkCV3BDmxYLp1ZU0lvGZzyG700vWvsSYhd");
 
+
+const app = express();
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json());
 
 app.post("/pay", async (req, res) => {
+ 
   try {
-    const amount = 1000;
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: parseFloat(amount) * 100,
+      amount: req.body.amount * 100,
       currency: "brl",
       payment_method_types: ["card"],
       metadata: {
