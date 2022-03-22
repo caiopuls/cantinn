@@ -17,10 +17,14 @@ app.post("/pay", async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: req.body.amount * 100,
       currency: "brl",
+      /* application_fee_amount: 100, */
       payment_method_types: ["card"],
       metadata: {
         name: "value",
       },
+      /* transfer_data: {
+        destination: '{{CONNECTED_STRIPE_ACCOUNT_ID}}',
+      }, */
     });
     const clientSecret = paymentIntent.client_secret;
     res.json({ clientSecret, message: "Payment Initiated" });
