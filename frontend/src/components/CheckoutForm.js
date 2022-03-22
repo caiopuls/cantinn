@@ -37,8 +37,9 @@ export default function CheckoutForm({ money }) {
     }
   };
   
-
-  const lids = Math.floor(Math.random() * 30);
+  var numberOfNumbers = 30; 
+  var startingNumber = 1; 
+  var lids = Math.floor((Math.random() * numberOfNumbers) + startingNumber); 
 
   return (
     <div className="flex flex-col">
