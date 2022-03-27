@@ -8,7 +8,7 @@ import Youtube from '../assets/Youtube.svg';
 
 function Footer() {
     return (
-        <div className="w-full bg-[#F4F4F4] px-32 py-14">
+        <div className="w-full bg-[#F9FBFC] px-32 py-14">
 
             <div className="flex justify-between">
             {/*Menus Nav Footer*/}
@@ -41,19 +41,19 @@ function Footer() {
             <nav>
                 <ul>
                     <li className='mb-3 li'>
-                        Aquisição de projetos
+                        Investimento em startups
                     </li>
 
                     <li className='mb-3 li'>
-                        Venda de projetos
+                        Venda de startups
                     </li>
 
                     <li className='mb-3 cursor-not-allowed'>
-                        Em Breve
+                        Crowdfunding - Em Breve
                     </li>
 
                     <li className='cursor-not-allowed'>
-                        Em Breve
+                        Competições - Em Breve
                     </li>
                 </ul>
             </nav>

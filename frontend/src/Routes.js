@@ -10,7 +10,10 @@ import UpdateProfile from "./pages/UpdateProfile";
 import SellMenu from "./pages/SellMenu";
 import AcquireMenu from "./pages/AcquireMenu";
 import ProjectPage from "./pages/ProjectPage";
+
 import Checkout from "./pages/Checkout";
+import SuccessPage from "./pages/SuccessPage";
+import Developing from "./pages/Developing";
 
 
 function Routes() {
@@ -45,6 +48,14 @@ function Routes() {
                 <Route
                 element={<Checkout/>}
                 path="/project/checkout/:postId" exact />
+
+                <Route
+                element={<SuccessPage/>}
+                path="/project/confirmed-payment/:randomId" exact />
+
+                <Route 
+                element={<Developing/>}
+                path="/page-in-development" />
 
                 <Route 
                 element={<ErrorPage/>}

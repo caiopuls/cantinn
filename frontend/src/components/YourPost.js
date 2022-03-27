@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ProjectSample from "../assets/ProjectSample.svg";
+import TextIcon from "../assets/textIcon.svg";
 import toast, { Toaster } from 'react-hot-toast';
-import CurrencyFormat from 'react-currency-format';
+import numeral from 'numeral';
 import { Link } from "react-router-dom";
 
 export default function YourPost( post ) {
@@ -17,75 +18,73 @@ export default function YourPost( post ) {
     toast(like ? "✖ Favorito removido" : "❤ Favoritado!");
   };
 
+  const postDate = post.date;
+  
+
+  var postRevenue = (new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(post.revenue));
+  let num = numeral(post.price).format('0.0a');
 
   return (
     <>
     <Toaster />
-    <div className="bg-[#fbfdff] border border-[#E3EEFA] p-9 flex-col rounded-md mb-5" key={post.id}>
-      <div className="flex justify-between gap-28">
-        <div className="flex-col">
+    <div className="bg-white border flex-wrap border-[#F2F2F2] drop-shadow-md p-5 rounded-sm mb-5" key={post.id}>
+     <div className="flex gap-3 items-center">
+       <img 
+        src={ProjectSample}
+        alt=""
+        width={66}
+        height={66}
+       />
 
-          <div className="flex items-center gap-5">
-            <img src={ProjectSample} alt="" />
-            <div className="flex-col gap-3">
-              <h1 className="text-2xl font-semibold">{post.name}</h1>
-              <p className="py-1 px-3 bg-[#EEEFF0] rounded-sm text-[#585858] text-center">
-                {post.niche}
-              </p>
-            </div>
-          </div>
+       <div>
+         <h1 className="text-xl font-medium">{post.name}</h1>
+         <p className="text-lg text-[#94989e]">{post.niche}</p>
+       </div>
+     </div>
 
-          <p className="max-w-md mt-9">
-          {post.postText}
-          </p>
-        </div>
+     <div className="flex items-start my-6">
+       <img 
+       src={TextIcon}
+       alt=""
+       className="px-5 inline-block"
+       />
 
-        <div className="flex-col">
-          <div className="flex gap-14 justify-between mb-4">
-            <div className="flex-col gap-3">
-              <h1>Número de usuários</h1>
-              <div className="text-2xl font-semibold">
-              <CurrencyFormat value={post.users} displayType={'text'} thousandSeparator={true}  renderText={value => <div>{value}</div>} />
-              </div>
-            </div>
+       <p className="flex-wrap max-w-xl">{post.resume}</p>
+     </div>
 
-            <div className="flex-col">
-              <h1>Receita mensal</h1>
-                <div className="text-2xl font-semibold">
-                  <CurrencyFormat value={post.revenue} displayType={'text'} thousandSeparator={true} prefix={'R$'} renderText={value => <div>{value}</div>} />
-                </div>
-            </div>
-          </div>
+     <hr />
 
-          <div className="flex gap-14 justify-between">
-            <div className="flex-col gap-3">
-              <h1>Data de fundação</h1>
-              <p className="text-2xl font-semibold">{post.date}</p>
-            </div>
+     <div className="flex gap-5 mt-5 px-3 items-center">
+       <div className="flex-col">
+         <p className="text-md text-[#94989e]">Valor</p>
+         <p className="text-xl font-medium">{'R$' + num}</p>
+       </div>
 
-            <div className="flex-col">
-              <h1>Valor do projeto</h1>
-                <div className="text-2xl font-semibold text-green-500">
-                  <CurrencyFormat value={post.price} displayType={'text'} thousandSeparator={true} prefix={'R$'} renderText={value => <div>{value}</div>} />
-                </div>
-            </div>
-          </div>
+       <div className="vr" />
 
-        </div>
-        
-      </div>
-      
-      <hr className="w-full border-[#E3EEFA] mt-8" />
-      <div className="flex justify-between items-center mt-4">
-          <button className={style} onClick={likeHandler}>❤ {like ? "Favoritado" : "Favoritar"}</button>
+       <div className="flex-col">
+         <p className="text-md text-[#94989e]">Participação</p>
+         <p className="text-xl font-medium">{post.offer}</p>
+       </div>
 
-          <Link to={`/project/${post.id}`}>
-            <button className="btn-outlined">Mais informações 🡪</button>
-          </Link>
-          
-      </div>
+       <div className="vr" />
+
+       <div className="flex-col">
+         <p className="text-md text-[#94989e]">Fundação</p>
+         <p className="text-xl font-medium">{postDate}</p>
+       </div>
+
+       <div className="vr" />
+
+       <Link to={`/project/${post.id}`}>
+        <button className="btn-blue px-5">Mais detalhes</button>
+      </Link>
+     </div>
       
     </div>
     </>
   );
 }
+
+// <button className={style} onClick={likeHandler}>❤ {like ? "Favoritado" : "Favoritar"}</button>
+

@@ -4,10 +4,11 @@ import { useStateIfMounted } from "use-state-if-mounted";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../services/firebase";
 
-import Footer from "../components/Footer";
+import FooterSmall from "../components/FooterSmall";
 import Header from "../components/HeaderLogged";
 
 import YourPost from "../components/YourPost";
+
 
 export default function AcquireMenu() {
   const [postLists, setPostList] = useStateIfMounted([]);
@@ -37,7 +38,7 @@ export default function AcquireMenu() {
           </div>
         </div>
       </div>
-      <Footer />
+      <FooterSmall />
     </div>
   );
 }

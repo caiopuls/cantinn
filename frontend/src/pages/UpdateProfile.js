@@ -5,7 +5,7 @@ import { useStateIfMounted } from "use-state-if-mounted";
 import { useAuth } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/HeaderLogged";
-import Footer from "../components/Footer";
+import FooterSmall from "../components/FooterSmall";
 
 export default function UpdateProfile() {
   const emailRef = useRef()
@@ -125,7 +125,7 @@ export default function UpdateProfile() {
       </div>
 
       <div>
-      <Footer />
+      <FooterSmall />
       </div>
     </>
   )

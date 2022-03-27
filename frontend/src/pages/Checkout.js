@@ -102,7 +102,7 @@ export default function Checkout() {
             <label className="flex-col text-sm text-gray-600">
               Informações do cartão
               <Elements stripe={stripePromise}>
-                <CheckoutForm money={money} />
+                <CheckoutForm money={money} postInfo={postInfo} />
               </Elements>
             </label>
           </div>

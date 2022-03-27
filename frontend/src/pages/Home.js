@@ -77,10 +77,10 @@ export default function Home() {
         </div>
 
         {/*Computer Money*/}
-        <div className="mt-20 bg-gray-100 py-14 px-20 flex items-center justify-center gap-32">
+        <div className="mt-20 bg-[#F9FBFC] py-14 px-20 flex items-center justify-center gap-32">
           <div>
-            <h1 className="text-5xl font-medium max-w-xl">Adquira e venda projetos pelo nosso marketplace.</h1>
-            <p className="pt-3 text-lg">Sem burocracias. Interface intuitiva. Taxas baixíssimas.</p>
+            <h1 className="text-5xl font-medium max-w-xl">Invista e venda startups pelo nosso marketplace.</h1>
+            <p className="pt-3 text-lg">Sem burocracias. Interface intuitiva.</p>
             <ScrollIntoView selector="#Header">
             <button className="btn-outlined mt-5">
                 Vamos nessa 🡪
@@ -94,10 +94,10 @@ export default function Home() {
         </div>
 
         {/*Book Woman*/}
-        <div className="mt-3 bg-gray-100 py-14 px-20 flex items-center justify-center gap-44">
+        <div className="mt-3 bg-[#F9FBFC] py-14 px-20 flex items-center justify-center gap-44">
           <div>
-            <h1 className="text-5xl font-medium max-w-3xl">Negocie projetos em fase inicial como websites e apps.</h1>
-            <p className="pt-3 text-lg max-w-lg">A maneira mais rápida de gerar dinheiro com um projeto seu, por um preço justo.</p>
+            <h1 className="text-5xl font-medium max-w-3xl">Capte recursos para investimento em sua startup.</h1>
+            <p className="pt-3 text-lg max-w-lg">A maneira mais eficaz de captar recursos com um projeto seu.</p>
             <ScrollIntoView selector="#Header">
             <button className="btn-outlined mt-5">
                 Vamos nessa 🡪

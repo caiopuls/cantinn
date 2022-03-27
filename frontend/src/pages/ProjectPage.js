@@ -11,18 +11,14 @@ import toast, { Toaster } from "react-hot-toast";
 
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../services/firebase";
-
+import ProjectSample from "../assets/ProjectSample.svg";
 import { useParams, useNavigate, Link } from "react-router-dom";
-
-import { useAuth } from "../contexts/AuthContext";
-
-
+import numeral from "numeral";
 
 export default function ProjectPage() {
   const navigate = useNavigate();
   const [postInfo, setPostInfo] = useState(null);
   const { postId } = useParams();
-  const { currentUser } = useAuth();
 
   const getSpecificPost = async (db, postId) => {
     const postRef = doc(db, "posts", postId);
@@ -42,10 +38,11 @@ export default function ProjectPage() {
     }
   }, [postId]);
 
-  const emailUser = currentUser.email;
+  const postDate = postInfo?.date.split("-")[0];
 
-  const money = postInfo?.price;
-  var postPrice = (new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(money));
+  let currentYear =  new Date().getFullYear();
+  let companyLife = (currentYear - postDate);
+
 
   document.title = `${postInfo?.name} Project – Cantinn`;
 
@@ -58,53 +55,68 @@ export default function ProjectPage() {
           <div className="mb-16 m-auto flex flex-col">
             <div className="flex">
               <button className="hover:opacity-80" onClick={() => navigate(-1)}>
-                <img src={ArrowLeft} alt="" className="absolute left--" height={40} width={40} />
+                <img
+                  src={ArrowLeft}
+                  alt=""
+                  className="absolute left--"
+                  height={40}
+                  width={40}
+                />
               </button>
 
-              <div className="flex-col">
-                <h1 className="text-3xl font-medium mb-3">
-                  {postInfo?.name}
-                </h1>
+              <div className="flex gap-3 items-center">
+                <img src={ProjectSample} alt="" width={66} height={66} />
 
-                <div className="flex items-center gap-4">
-                  <p className="py-1 px-3 bg-[#EEEFF0] rounded-sm text-[#585858] text-center">
+                <div>
+                  <h1 className="text-2xl font-medium">{postInfo?.name}</h1>
+                  <p className="text-xl text-[#94989e]">
                     {postInfo?.niche}
                   </p>
-
-                  <p className="text-gray-500">Fundado em: {postInfo?.date}</p>
                 </div>
               </div>
             </div>
 
-            <div className="mt-9">
-              <div className="flex justify-between gap-12">
+            <div className="w-full mt-9">
+              <div className="flex gap-12">
                 <div>
                   <img src={BgBig} alt="" />
                 </div>
 
                 <div
                   id="PostInformations"
-                  className="border border-gray-200 p-7"
-                >
+                  className="border border-gray-200 p-7">
+               
                   <div className="flex gap-2">
                     <img src={ChatAbout} alt="" />
-                    <h1 className="font-medium text-xl">Sobre o projeto</h1>
+                    <h1 className="font-medium text-xl">Sobre a startup</h1>
                   </div>
 
                   <div className="mt-7">
                     <p className="max-w-sm">{postInfo?.resume}</p>
                   </div>
 
-                  <div className="text-xl my-10">
-                    <p>Valor: <b>{postPrice}</b></p>
+                  <div className="flex flex-1 gap-5 my-7 items-center">
+                    <div className="flex-col">
+                      <p className="text-md text-[#94989e]">Valor</p>
+                      <p className="text-xl font-medium">{postInfo?.price}</p>
+                    </div>
+
+                    <div className="vr" />
+
+                    <div className="flex-col">
+                      <p className="text-md text-[#94989e]">Participação</p>
+                      <p className="text-xl font-medium">{postInfo?.offer}</p>
+                    </div>
                   </div>
+                  
 
                   <div>
                     <Link to={`/project/checkout/${postId}`}>
-                      <button className="btn-blue">Entrar em negociação</button>
+                      <button className="btn-blue">Tenho interesse</button>
                     </Link>
                   </div>
                 </div>
+                
               </div>
 
               <div className="border-b border-b-1">
@@ -123,32 +135,57 @@ export default function ProjectPage() {
               </div>
 
               <div className="border-b border-b-1">
+              <div className="flex gap-20 my-6">
+                      <div>
+                        <p>Público-alvo</p>
+                        <p className="text-xl font-medium">{postInfo?.target}</p>
+                      </div>
+
+                      <div>
+                        <p>Tempo de vida da startup</p>
+                        <p className="text-xl font-medium">{companyLife + " anos"}</p>
+                      </div>
+
+                      <div>
+                        <p>Valuation estimado</p>
+                        <div className="text-xl font-medium">Em breve</div>
+                      </div>
+                    </div>
+              </div>
+
+              <div className="border-b border-b-1">
                 <div className="flex gap-4 my-8 items-center">
                   <div className="flex-col items-center">
-                    <p className="text-xl font-medium">Números do projeto</p>
+                    <p className="text-xl font-medium">Números da startup</p>
 
-                    <div className="flex gap-20 mt-6">
+                    <div className="flex gap-20">
+                    <div className="flex-col my-6">
                       <div>
                         <p>Número de clientes</p>
-                        <p className="text-xl font-medium">
-                          {postInfo?.users}
-                        </p>
+                        <p className="text-xl font-medium">{postInfo?.users}</p>
                       </div>
 
+                      <div className="mt-3">
+                        <p>CAC - Custo de aquisição do cliente</p>
+                        <div className="text-xl font-medium">{postInfo?.cac}</div>
+                      </div>
+                    </div>
+
+                    <div className="flex-col gap-20 my-6">
                       <div>
-                        <p>Receita mensal</p>
-                        <div className="text-xl font-medium">
-                          {postPrice}
-                        </div>
+                        <p>MRR - Receita mensal</p>
+                        <p className="text-xl font-medium">{postInfo?.revenue}</p>
                       </div>
+
+                      <div className="mt-3">
+                        <p>LTV - Loan-to-Value</p>
+                        <div className="text-xl font-medium">{postInfo?.ltv}</div>
+                      </div>
+                    </div>
                     </div>
 
-                    <div className="mt-5">
-                      <p>Lucro líquido mensal</p>
-                      <div className="text-xl font-medium">
-                        {postPrice}
-                      </div>
-                    </div>
+                    
+                    
                   </div>
                 </div>
               </div>
@@ -181,9 +218,7 @@ export default function ProjectPage() {
                     <div className="mt-5">
                       <p>Email para contato</p>
                       <div className="text-xl font-medium">
-                        <p className="text-xl font-medium">
-                          {postInfo?.email}
-                        </p>
+                        <p className="text-xl font-medium">{postInfo?.email}</p>
                       </div>
                     </div>
                   </div>

@@ -6,11 +6,15 @@ import {
 } from "@stripe/react-stripe-js";
 
 import toast, { Toaster } from 'react-hot-toast';
+import { useNavigate } from "react-router-dom";
 
 
 export default function CheckoutForm({ money }) {
   const stripe = useStripe();
   const elements = useElements();
+  const navigate = useNavigate();
+
+  var randomId = Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
 
   const pay = async () => {
     try {
@@ -29,7 +33,7 @@ export default function CheckoutForm({ money }) {
       );
       console.log(confirmPayment);
       const { paymentIntent } = confirmPayment;
-      if (paymentIntent.status === "succeeded") toast.success(`Pagamento confirmado com sucesso!`);
+      if (paymentIntent.status === "succeeded") toast.success(`Pagamento confirmado com sucesso!`) && navigate(`/project/confirmed-payment/${randomId}`);
       else toast.error(`Houve um erro no pagamento :(`);
     } catch (err) {
       console.error(err);

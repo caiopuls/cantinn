@@ -123,7 +123,7 @@ filter: blur(150px);
 
 #intraText {
   word-wrap: break-word;
-  height: 219px;
+  height: 231px;
   resize: none;
 }
 
@@ -138,4 +138,13 @@ filter: blur(150px);
 
 .checAside {
   background: white;
+}
+
+#invest {
+  background: url('../assets/Banner.png') no-repeat center/ cover;
+}
+
+.vr {
+  height: 50px;
+  border: #EAEAEA 1px solid;
 }
